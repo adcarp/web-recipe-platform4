@@ -89,28 +89,28 @@ export default function Navbar() {
                         onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                       >
-                        👤 My Account
+                        My Account
                       </Link>
                       <Link
                         href="/account?tab=recipes"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                       >
-                        📖 My Recipes
+                        My Recipes
                       </Link>
                       <Link
                         href="/account?tab=favorites"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                       >
-                        ❤️ Favorites
+                        Favorites
                       </Link>
                       <Link
                         href="/account?tab=dashboard"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
                       >
-                        📊 Dashboard
+                        Dashboard
                       </Link>
                       <button
                         onClick={handleLogout}
@@ -171,21 +171,21 @@ export default function Navbar() {
                   onClick={() => setIsMenuOpen(false)}
                   className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all"
                 >
-                  👤 Account
+                  Account
                 </Link>
                 <Link 
                   href="/account?tab=recipes" 
                   onClick={() => setIsMenuOpen(false)}
                   className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all"
                 >
-                  📖 My Recipes
+                  My Recipes
                 </Link>
                 <Link 
                   href="/account?tab=favorites" 
                   onClick={() => setIsMenuOpen(false)}
                   className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all"
                 >
-                  ❤️ Favorites
+                  Favorites
                 </Link>
                 <button
                   onClick={() => {
@@ -194,7 +194,7 @@ export default function Navbar() {
                   }}
                   className="w-full text-left px-4 py-2 text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all"
                 >
-                  🚪 Logout
+                  Logout
                 </button>
               </>
             ) : !loading ? (

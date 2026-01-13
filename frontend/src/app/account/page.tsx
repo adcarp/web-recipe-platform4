@@ -261,10 +261,10 @@ export default function AccountPage() {
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
             >
-              {tab === 'profile' && '👤 Profile'}
-              {tab === 'recipes' && '📖 My Recipes'}
-              {tab === 'favorites' && '❤️ Favorites'}
-              {tab === 'dashboard' && '📊 Dashboard'}
+              {tab === 'profile' && 'Profile'}
+              {tab === 'recipes' && 'My Recipes'}
+              {tab === 'favorites' && 'Favorites'}
+              {tab === 'dashboard' && 'Dashboard'}
             </button>
           ))}
         </div>

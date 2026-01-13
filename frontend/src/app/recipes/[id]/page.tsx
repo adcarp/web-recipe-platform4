@@ -175,37 +175,7 @@ export default function RecipeDetailPage() {
     }
   };
 
-  const handleEditReview = async (reviewId: string, updatedData: Partial<Review>) => {
-    try {
-      await updateDoc(doc(db, 'review', reviewId), {
-        ...updatedData,
-        updatedAt: serverTimestamp(),
-      });
-      
-      // If editing user's own review
-      if (userReview?.id === reviewId) {
-        setUserReview({ ...userReview, ...updatedData });
-      } else {
-        const updatedReviews = reviews.map(r =>
-          r.id === reviewId ? { ...r, ...updatedData } : r
-        );
-        setReviews(updatedReviews);
-      }
-      
-      // Update average rating
-      const allReviewsList = userReview?.id === reviewId
-        ? [{ ...userReview, ...updatedData }, ...reviews]
-        : [userReview, ...reviews.map(r => r.id === reviewId ? { ...r, ...updatedData } : r)].filter(Boolean);
-      const allRatings = (allReviewsList as Review[]).map(r => r.rating);
-      const avgRating = allRatings.reduce((a, b) => a + b, 0) / allRatings.length;
-      setAverageRating(avgRating);
-      
-      showSuccess('Review updated successfully!');
-    } catch (error) {
-      console.error('Error updating review:', error);
-      throw error;
-    }
-  };
+
 
   const { isFavorited, favoritesCount, toggleFavorite, loading: favoriteLoading } = useFavorites(
     id,
@@ -594,26 +564,13 @@ export default function RecipeDetailPage() {
                   {userReview.comment}
                 </p>
 
-                {/* Edit/Delete Buttons */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => {
-                      const reviewElement = document.querySelector('[data-review-id="' + userReview.id + '"]');
-                      if (reviewElement) {
-                        reviewElement.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-all"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteReview(userReview.id)}
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-all"
-                  >
-                    Delete
-                  </button>
-                </div>
+                {/* Delete Button */}
+                <button
+                  onClick={() => handleDeleteReview(userReview.id)}
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-all"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           )}
@@ -623,7 +580,6 @@ export default function RecipeDetailPage() {
             averageRating={userReview ? ([userReview, ...reviews].reduce((sum, r) => sum + r.rating, 0) / ([userReview, ...reviews].length)) : averageRating}
             totalReviews={reviews.length + (userReview ? 1 : 0)}
             onDeleteReview={handleDeleteReview}
-            onEditReview={handleEditReview}
           />
         </div>      </article>
     </main>
