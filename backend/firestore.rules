@@ -16,5 +16,13 @@ service cloud.firestore {
       allow update: if request.auth.uid == resource.data.authorId;
       allow delete: if request.auth.uid == resource.data.authorId;
     }
+
+    // Reviews collection - public read, authenticated write own
+    match /review/{reviewId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update: if request.auth.uid == resource.data.userId;
+      allow delete: if request.auth.uid == resource.data.userId;
+    }
   }
 }

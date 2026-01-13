@@ -105,7 +105,7 @@ export default function RecipeCard({
           href={`/recipes/${id}`}
           className="w-full py-2.5 bg-orange-500 hover:bg-orange-600 text-white text-center font-bold rounded-lg transition-all active:scale-95"
         >
-          View Full Recipe
+          View full recipe
         </Link>
       </div>
     </div>

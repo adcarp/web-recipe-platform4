@@ -47,7 +47,7 @@ export default function ReviewForm({
         recipeId,
         userId,
         userName,
-        userPhoto,
+        ...(userPhoto && { userPhoto }),
         rating,
         comment: comment.trim(),
         likes: 0,
@@ -140,7 +140,7 @@ export default function ReviewForm({
       {/* Submit Button */}
       <button
         type="submit"
-        disabled={submitting || isLoading || comment.trim().length < 5}
+        disabled={submitting || isLoading}
         className="w-full px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {submitting ? 'Posting...' : 'Post Review'}
